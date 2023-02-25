@@ -1,0 +1,15 @@
+g219_dummy0 xor2 n_6 n_7 dummy_0
+g219 xnor2 n_8 dummy_0 q
+g220_dummy0 xor2 n_4 n_3 dummy_1
+g220 xnor2 n_5 dummy_1 n_8
+g222_dummy0 xor2 o p dummy_2
+g222 xnor2 n_2 dummy_2 n_7
+g221_dummy0 xor2 k l dummy_3
+g221 xnor2 n_1 dummy_3 n_6
+g223_dummy0 xor2 c d dummy_4
+g223 xnor2 n_0 dummy_4 n_5
+g224 xor2 h g n_4
+g225 xnor2 f e n_3
+g226 xnor2 n m n_2
+g227 xor2 j i n_1
+g228 xnor2 b a n_0

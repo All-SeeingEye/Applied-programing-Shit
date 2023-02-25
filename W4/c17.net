@@ -1,0 +1,6 @@
+g51 nand2 n_3 n_0 N22
+g52 nand2 n_3 n_2 N23
+g53 nand2 n_1 N2 n_3
+g54 nand2 n_1 N7 n_2
+g55 nand2 N1 N3 n_0
+g56 nand2 N3 N6 n_1
