@@ -1,0 +1,50 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printFibonacci(int n){    
+    static int n1=1, n2=2, n3;    
+    if(n>0){    
+         n3 = n1 + n2;    
+         n1 = n2;    
+         n2 = n3;    
+ cout<<n1<<""<<n2<<" "<<n3<<" ";    
+         printFibonacci(n-3);    
+    }    
+} 
+const int MAX_N=1e4+1;
+vector<pair<int,int>> graph[MAX_N];
+int value[MAX_N];
+//In each recursive call of the depth first function, the distance of the current node node is updated by setting val[node] equal to val[parent] + 1. 
+//Then, for each child of the current node node, the depth first function is called recursively with the child node as the new current node and the current node node as its parent.
+//I will implement topological sort and even levels will be zero and odd levels will be 1
+void topological_sort(int node,int parent_node){
+    value[node]=value[parent_node]+1;
+    for(auto child :graph[node]){
+        if(value[child.first]==0 && child.first!=parent_node){
+            topological_sort(child.first, node);
+        }
+    }
+}
+
+
+int main(){
+    
+   
+        freopen("input.txt","r",stdin);
+        freopen("output(4th).txt","w",stdout);
+    
+    int node,edges;
+    cin>>node>>edges;
+    int x,y,z;
+    for(int i=0; i<edges; i++){
+        cin>>x>>y>>z;
+        graph[x].push_back({y,z});
+        graph[y].push_back({x,z});
+    }
+    int root=1;
+    topological_sort(root,0);
+    cout<<node<<endl;
+    for(int j=1; j<=node; j++){
+        cout<<value[j]%2<<endl;
+    }
+    return 0;
+}

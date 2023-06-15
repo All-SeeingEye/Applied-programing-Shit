@@ -1,0 +1,12 @@
+.circuit
+R1 1 GND 1e3
+R2 1 2 2e3
+R3 2 3 4e3
+V1 3 GND ac 2 0
+V2 2 4 dc 5
+R4 4 5 5e3
+I1 5 GND dc 1
+R6 4 6 8e3
+I2 GND 6 dc 10
+.end
+.ac V1 50

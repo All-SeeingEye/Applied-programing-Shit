@@ -1,0 +1,61 @@
+#include<bits/stdc++.h>
+using namespace std;
+void printFibonacci(int n){    
+    static int n1=1, n2=2, n3;    
+    if(n>0){    
+         n3 = n1 + n2;    
+         n1 = n2;    
+         n2 = n3;    
+ cout<<n1<<""<<n2<<" "<<n3<<" ";    
+         printFibonacci(n-3);    
+    }    
+} 
+
+const int N=1e5+1;
+vector<pair<int,int>> graph[N];
+int check[N];
+
+//We are simply carrying out dfs and categorising the even nodes as 1 and odd nodes as 0
+void dfs_stack(int start_node) {
+    stack<pair<int,int>> stk;
+    stk.push(make_pair(start_node, 0)); // push the start node onto the stack with parent = 0
+
+    while (!stk.empty()) {
+        pair<int,int> curr = stk.top();
+        stk.pop();
+
+        int node = curr.first;
+        int parent = curr.second;
+
+        if (check[node] == 0) { // node has not been visited yet
+            check[node] = check[parent] + 1; // set depth of node
+
+            for (auto child : graph[node]) {
+                if (check[child.first] == 0 && child.first != parent) {
+                    stk.push(make_pair(child.first, node)); // push child node onto stack
+                }
+            }
+        }
+    }
+}
+
+int main(){
+        freopen("input2.txt","r",stdin);
+        freopen("output(check2).txt","w",stdout);
+    
+    int nodes,edges;
+    cin>>nodes>>edges;
+    int x,y,z;
+    for(int i=0; i<edges; i++){
+        cin>>x>>y>>z;
+        graph[x].push_back({y,z});
+        graph[y].push_back({x,z});
+    }
+    int start_node=1;
+    dfs_stack(start_node);
+    cout<<nodes<<endl;
+    for(int i=1; i<=nodes; i++){
+        cout<<(check[i]+1)%2<<endl;//Categorising into two parts
+    }
+    return 0;
+}

@@ -1,0 +1,6 @@
+.circuit
+V1 n1 0 5
+R1 n1 n2 0.1
+L1 n2 n3 0.2
+C1 n3 0 0.4
+.end
